@@ -12,10 +12,10 @@ root.render(
         <Leva collapsed/>
         <Canvas
             camera={ {
-                fov: 45,
-                near: 0.1,
+                fov: 75,
+                near: 0.01,
                 far: 200,
-                position: [ - 4, 3, 6 ]
+                position: [ 0, 10, 20 ]
             } }
         >
             <Experience />
