@@ -17,6 +17,13 @@ export default function Lights()
             shadow-camera-bottom={ - 10 }
             shadow-camera-left={ - 10 }
         />
-        <ambientLight intensity={0.5} />
+        <pointLight
+            castShadow 
+            color={'#ffffff'}
+            position={[10, 20, 0]}
+            intensity={0.4}
+        />
+        
+        <ambientLight intensity={0.1} />
     </>
 }

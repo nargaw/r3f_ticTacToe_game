@@ -11,11 +11,12 @@ root.render(
     <StrictMode>
         <Leva collapsed/>
         <Canvas
+            shadows
             camera={ {
                 fov: 75,
                 near: 0.01,
                 far: 200,
-                position: [ 0, 10, 20 ]
+                position: [ 0, 20, -15 ]
             } }
         >
             <Experience />

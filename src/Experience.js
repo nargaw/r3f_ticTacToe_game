@@ -1,14 +1,24 @@
 import { OrbitControls } from '@react-three/drei'
 import { useControls } from 'leva'
 import { useGLTF } from '@react-three/drei'
+import { Physics, Debug } from '@react-three/rapier'
 import Lights from './Lights.js'
-import Level from './Level.js'
+import Environment from './Environment.js'
+import Platform from './Platform.js'
+import GamePieces from './GamePieces.js'
+
 
 export default function Experience()
 {
     return <>
         <OrbitControls makeDefault />
-        <Lights />
-        <Level />
+        <Physics>
+            {/* <Debug /> */}
+            <Lights />
+            <Environment />
+            <Platform />
+            <GamePieces />
+        </Physics>
+        
     </>
 }
