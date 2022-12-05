@@ -12,7 +12,7 @@ export default function Environment()
             type="fixed"
             colliders="cuboid"
             restitution={0.2}
-            friction={0}
+            friction={0.2}
         >
             <mesh
                 receiveShadow 
@@ -22,29 +22,31 @@ export default function Environment()
                 rotation-x = {-Math.PI * 0.5}
                 position-y = {-25}
             />
-            <mesh
+            {/* <mesh
                 // receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
                 scale={[50, 50, 1]}
                 rotation-x = {-Math.PI * 0.5}
                 position-y = {25}
-            />
+            /> */}
             <mesh
                 receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
-                scale={[50, 50, 1]}
+                scale={[50, 25, 1]}
                 rotation-y = {-Math.PI * 0.5}
                 position-x = {25}
+                position-y = {-12.5}
             />
             <mesh
                 receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
-                scale={[50, 50, 1]}
+                scale={[50, 25, 1]}
                 rotation-y = {-Math.PI * 0.5}
                 position-x = {-25}
+                position-y = {-12.5}
             />
             <mesh
                 receiveShadow 
@@ -58,17 +60,19 @@ export default function Environment()
                 receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
-                scale={[50, 50, 1]}
+                scale={[25, 50, 1]}
                 rotation-z = {-Math.PI * 0.5}
                 position-z = {-25}
+                position-y = {-12.5}
             />
             <mesh
                 receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
-                scale={[50, 50, 1]}
+                scale={[25, 50, 1]}
                 rotation-z = {-Math.PI * 0.5}
                 position-z = {25}
+                position-y = {-12.5}
             />
         </RigidBody>
         
