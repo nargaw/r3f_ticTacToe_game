@@ -7,7 +7,6 @@ export default function GamePieces()
 
     const torusGeometry = new THREE.TorusGeometry(1, 0.5, 32, 32)
     const xGeometry = new THREE.BoxGeometry(4, 1, 1)
-    xGeometry.rotateZ = -Math.PI * 0.25
     const material = new THREE.MeshStandardMaterial({color: 0x7fc8f8})
 
     const torusCount = 100
@@ -15,6 +14,10 @@ export default function GamePieces()
 
     const xCount = 50
     const xRefs = useRef()
+
+    const group = useRef()
+    console.log(group)
+    
 
     const torusTransforms = useMemo(() => 
     {
@@ -57,6 +60,8 @@ export default function GamePieces()
     }, [])
 
     return <>
+
+        
         <RigidBody
             type="fixed"
             restitution={0.25}
@@ -77,7 +82,7 @@ export default function GamePieces()
             <BallCollider args={[0.75]} position={[-0.75, -0.75, 0]}/>
         </RigidBody>
         <RigidBody
-            type="fixed"
+            type="dynamic"
             restitution={0.25}
             friction={0.1}
             colliders="cuboid"
@@ -95,6 +100,7 @@ export default function GamePieces()
                     rotation-z={Math.PI * 0.25}
                 />
             </group>
+            
         </RigidBody>
         
         <InstancedRigidBodies
@@ -103,12 +109,6 @@ export default function GamePieces()
             scales={torusTransforms.scales}
             colliders="cuboid"
         >
-            {/* <CuboidCollider args={[0.5, 1.5, 0.5]}/>
-            <CuboidCollider args={[1.5, 0.5, 0.5]}/>
-            <BallCollider args={[0.75]} position={[0.75, 0.75, 0]}/>
-            <BallCollider args={[0.75]} position={[-0.75, 0.75, 0]}/>
-            <BallCollider args={[0.75]} position={[0.75, -0.75, 0]}/>
-            <BallCollider args={[0.75]} position={[-0.75, -0.75, 0]}/> */}
             <instancedMesh
                 ref={torusRefs}
                 args={[torusGeometry, material, torusCount]}
@@ -122,21 +122,10 @@ export default function GamePieces()
             scales={xTransforms.scales}
             colliders="cuboid"
         >
-            <instancedMesh ref={xRefs}>
-                <group>
-                    <mesh 
-                        geometry={xGeometry}
-                        material={material}
-                        rotation-z={-Math.PI * 0.25}
-                    />
-                    <mesh 
-                        geometry={xGeometry}
-                        material={material}
-                        rotation-z={Math.PI * 0.25}
-                    />
-                </group>
-            </instancedMesh>
-             
+            <instancedMesh 
+                ref={xRefs} 
+                args={[xGeometry, material, xCount]} 
+            />    
         </InstancedRigidBodies>
     </>
 }
