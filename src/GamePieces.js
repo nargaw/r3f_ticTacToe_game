@@ -1,6 +1,7 @@
 import { BallCollider, CuboidCollider, InstancedRigidBodies, RigidBody } from '@react-three/rapier'
 import { useRef, useMemo } from 'react'
 import *  as THREE from 'three'
+import { BufferGeometryUtils } from 'three'
 
 export default function GamePieces()
 {
@@ -14,10 +15,6 @@ export default function GamePieces()
 
     const xCount = 50
     const xRefs = useRef()
-
-    const group = useRef()
-    console.log(group)
-    
 
     const torusTransforms = useMemo(() => 
     {
@@ -82,7 +79,7 @@ export default function GamePieces()
             <BallCollider args={[0.75]} position={[-0.75, -0.75, 0]}/>
         </RigidBody>
         <RigidBody
-            type="dynamic"
+            type="fixed"
             restitution={0.25}
             friction={0.1}
             colliders="cuboid"
@@ -125,7 +122,7 @@ export default function GamePieces()
             <instancedMesh 
                 ref={xRefs} 
                 args={[xGeometry, material, xCount]} 
-            />    
+            />  
         </InstancedRigidBodies>
     </>
 }
