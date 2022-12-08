@@ -6,6 +6,7 @@ import Lights from './Lights.js'
 import Environment from './Environment.js'
 import Platform from './Platform.js'
 import GamePieces from './GamePieces.js'
+import Text from './Text.js'
 
 
 export default function Experience()
@@ -18,7 +19,8 @@ export default function Experience()
             <Environment />
             <Platform />
             <GamePieces />
+            
         </Physics>
-        
+        <Text />
     </>
 }

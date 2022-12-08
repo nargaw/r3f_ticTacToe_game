@@ -14,12 +14,6 @@ export default function GamePieces()
 
     const xCount = 50
     const xRef = useRef()
-    console.log(xRef)
-
-    const jump = () => 
-    {
-        xRef.current.applyImpulse({x:0, y: 5, z: 0})
-    }
 
     const torusTransforms = useMemo(() => 
     {
@@ -45,7 +39,6 @@ export default function GamePieces()
     return <>
         {[...Array(150)].map((value, index) =>
         <RigidBody
-            ref={xRef}
             key={index}
             restitution={0.25}
             friction={0.1}
@@ -56,7 +49,7 @@ export default function GamePieces()
                 (Math.random() - 0.5) * 4
             ]}
         >
-            <group onClick={jump}>
+            <group>
                 <mesh 
                     geometry={xGeometry}
                     material={material}
@@ -80,7 +73,6 @@ export default function GamePieces()
         >
             <RoundCuboidCollider args={[2.0, 1.25, 0.125, 1.25]}/>
             <instancedMesh
-                onClick={jump}
                 ref={torusRefs}
                 args={[torusGeometry, material, torusCount]}
                 castShadow
