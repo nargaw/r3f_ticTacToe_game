@@ -25,7 +25,7 @@ export default function GamePieces()
         {
             positions.push([
                 (Math.random() - 0.5) * 5,
-                5,
+                0,
                 (Math.random() - 0.5) * 5 + 15
             ])
             rotations.push([0, 0, 0])
@@ -45,7 +45,7 @@ export default function GamePieces()
             colliders="cuboid"
             position={[
                 (Math.random() - 0.5) * 4,
-                5,
+                5 + index * 0.1,
                 (Math.random() - 0.5) * 4
             ]}
         >

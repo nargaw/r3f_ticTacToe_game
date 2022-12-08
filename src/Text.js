@@ -1,4 +1,5 @@
 import { Text3D, Center } from "@react-three/drei"
+import { RigidBody } from "@react-three/rapier"
 import { useRef } from "react"
 
 export default function Text()
@@ -7,25 +8,32 @@ export default function Text()
     console.log(text)
 
     return <>
-        <Center>
-            <Text3D
-                ref={text}
-                font="./Gugi_Regular.json"
-                scale={[6, 6, 1]}
-                rotation-y = {-Math.PI}
-                position={[0, 10, 1]}
-                size={ 0.75 }
-                height={ 2 }
-                curveSegments={ 12 }
-                bevelEnabled
-                bevelThickness={ 0.05 }
-                bevelSize={ 0.02 }
-                bevelOffset={ 0 }
-                bevelSegments={ 5 }
+        {/* <Center> */}
+            <RigidBody
+                type="fixed"
+                position={[0, 5, 25]}
             >
-                TIC TAC TOE
-                <meshNormalMaterial />
-            </Text3D>
-        </Center>   
+                <Center>
+                    <Text3D
+                        ref={text}
+                        font="./Gugi_Regular.json"
+                        scale={[6, 6, 1]}
+                        rotation-y = {-Math.PI}
+                        size={ 0.75 }
+                        height={ 2 }
+                        curveSegments={ 12 }
+                        bevelEnabled
+                        bevelThickness={ 0.05 }
+                        bevelSize={ 0.02 }
+                        bevelOffset={ 0 }
+                        bevelSegments={ 5 }
+                    >
+                        TIC TAC TOE
+                        <meshStandardMaterial color={0x7fc8f8}/>
+                    </Text3D>
+                </Center>
+            </RigidBody>
+            
+        {/* </Center>    */}
     </>
 }
