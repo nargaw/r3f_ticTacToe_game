@@ -16,12 +16,13 @@ export default function Platform()
             friction={0}
         >
             <mesh 
-            geometry={platformGeometry}
-            material={platformMaterial}
-            rotation-x={-Math.PI * 0.5}
-            castShadow
-            receiveShadow
+                geometry={platformGeometry}
+                material={platformMaterial}
+                rotation-x={-Math.PI * 0.5}
+                castShadow
+                receiveShadow
             />
+ 
             <mesh 
                 geometry={gridGeometry}
                 material={platformMaterial}
