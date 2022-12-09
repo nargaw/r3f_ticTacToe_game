@@ -11,12 +11,12 @@ export default function Text()
         {/* <Center> */}
             <RigidBody
                 type="fixed"
-                position={[0, 5, 25]}
+                position={[0, 5, 24]}
             >
                 <Center>
                     <Text3D
                         ref={text}
-                        font="./Gugi_Regular.json"
+                        font="./Offside_Regular.json"
                         scale={[6, 6, 1]}
                         rotation-y = {-Math.PI}
                         size={ 0.75 }

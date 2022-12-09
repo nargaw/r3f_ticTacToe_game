@@ -7,12 +7,13 @@ import Environment from './Environment.js'
 import Platform from './Platform.js'
 import GamePieces from './GamePieces.js'
 import Text from './Text.js'
+import Game from './Game.js'
 
 
 export default function Experience()
 {
     return <>
-        <OrbitControls makeDefault />
+        {/* <OrbitControls makeDefault /> */}
         <Physics>
             {/* <Debug /> */}
             <Lights />
@@ -21,6 +22,7 @@ export default function Experience()
             <GamePieces />
             <Text />
         </Physics>
+        <Game />
         
     </>
 }
