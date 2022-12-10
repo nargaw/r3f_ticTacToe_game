@@ -12,9 +12,6 @@ export default function GamePieces()
     const torusCount = 150
     const torusRefs = useRef()
 
-    const xCount = 50
-    const xRef = useRef()
-
     const torusTransforms = useMemo(() => 
     {
         const positions = []
@@ -24,9 +21,9 @@ export default function GamePieces()
         for (let i = 0; i < torusCount; i++)
         {
             positions.push([
-                (Math.random() - 0.5) * 5,
-                0,
-                (Math.random() - 0.5) * 5 + 15
+                (Math.random() - 0.5) * 4,
+                15 * i,
+                (Math.random() - 0.5) - 5 
             ])
             rotations.push([0, 0, 0])
             scales.push([1, 1, 1])
@@ -45,8 +42,8 @@ export default function GamePieces()
             colliders="cuboid"
             position={[
                 (Math.random() - 0.5) * 4,
-                5 + index * 0.1,
-                (Math.random() - 0.5) * 4
+                15 * index,
+                (Math.random() - 0.5) + 5
             ]}
         >
             <group>

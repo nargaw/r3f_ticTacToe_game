@@ -22,14 +22,14 @@ export default function Environment()
                 rotation-x = {-Math.PI * 0.5}
                 position-y = {-25}
             />
-            <mesh
+            {/* <mesh
                 // receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
                 scale={[50, 50, 1]}
                 rotation-x = {-Math.PI * 0.5}
                 position-y = {25}
-            />
+            /> */}
             <mesh
                 receiveShadow 
                 geometry={boxGeometry}

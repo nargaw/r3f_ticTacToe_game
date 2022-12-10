@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { RigidBody } from '@react-three/rapier'
 
-export function CreateX()
+export default function CreateX()
 {
     const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
     const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)

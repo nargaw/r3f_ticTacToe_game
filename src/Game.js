@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { useRef } from 'react'
 import { RigidBody } from '@react-three/rapier'
-import { CreateX } from './CreateX'
+import CreateX from './CreateX'
 
 export default function Game()
 {
@@ -15,14 +15,6 @@ export default function Game()
     const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
     const oGeometry = new THREE.TorusGeometry(0.5, 0.25, 32, 32)
 
-    let array = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
-    ]
-
-    const turns = ['x', 'o']
-    let currentTurn = turns[0]
 
     const topLeft = useRef()
     const topMid = useRef()
@@ -62,21 +54,26 @@ export default function Game()
         let position = e.eventObject.position
         console.log(e.eventObject.position)
         e.stopPropagation()
-
+        // createX()
         return <>
             {console.log('here')}
+            {/* <mesh 
+                position={[0, 0, 0]}
+                material={xMaterial}
+                geometry={xGeometry}
+            />
+            {console.log('here too')} */}
             <CreateX />
-            {console.log('here too')}
         </>
     }
 
     return <>
         <mesh
-            onClick={action}
             ref={topLeft} 
             geometry={geometry}
             material={material}
             position={[-3.25, 1, -3.25]}
+            onClick={action}
         />
         <mesh
             onClick={action}
