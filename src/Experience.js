@@ -13,7 +13,7 @@ import Game from './Game.js'
 export default function Experience()
 {
     return <>
-        {/* <OrbitControls makeDefault /> */}
+        <OrbitControls makeDefault />
         <Physics>
             {/* <Debug /> */}
             <Lights />
@@ -21,8 +21,9 @@ export default function Experience()
             <Platform />
             <GamePieces />
             <Text />
+            <Game />
         </Physics>
-        <Game />
+       
         
     </>
 }
