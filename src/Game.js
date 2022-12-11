@@ -1,34 +1,18 @@
 import * as THREE from 'three'
 import { useRef } from 'react'
 import { RigidBody } from '@react-three/rapier'
-import CreateX from './CreateX'
 
-export default function Game()
+export function CreateX()
 {
-
-    const geometry = new THREE.BoxGeometry(3, 2, 3)
-    const material = new THREE.MeshBasicMaterial({ wireframe: true})
-    material.visible = true
 
     const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
 
     const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
     const oGeometry = new THREE.TorusGeometry(0.5, 0.25, 32, 32)
 
-
-    const topLeft = useRef()
-    const topMid = useRef()
-    const topRight = useRef()
-    const midLeft = useRef()
-    const midMid = useRef()
-    const midRight = useRef()
-    const bottomLeft = useRef()
-    const bottomMid = useRef()
-    const bottomRight = useRef()
-
-    const createX = () => {
-        return <>
+    return <>
             <RigidBody
+                ref={newMesh}
                 type="dynamic"
                 position={[0, 15, 0]}
                 colliders="cuboid"
@@ -47,22 +31,40 @@ export default function Game()
                 </group>
             </RigidBody>   
         </>
+}
+
+export default function Game()
+{
+
+    const newMesh = useRef()
+    console.log(newMesh)
+
+    const geometry = new THREE.BoxGeometry(3, 2, 3)
+    const material = new THREE.MeshBasicMaterial({ wireframe: true})
+    material.visible = true
+
+    const topLeft = useRef()
+    const topMid = useRef()
+    const topRight = useRef()
+    const midLeft = useRef()
+    const midMid = useRef()
+    const midRight = useRef()
+    const bottomLeft = useRef()
+    const bottomMid = useRef()
+    const bottomRight = useRef()
+
+    const createX = () => {
+        
     }
 
     const action = (e) => 
     {
+        createX()
         let position = e.eventObject.position
-        console.log(e.eventObject.position)
+        console.log(position)
         e.stopPropagation()
-        // createX()
+        
         return <>
-            {console.log('here')}
-            {/* <mesh 
-                position={[0, 0, 0]}
-                material={xMaterial}
-                geometry={xGeometry}
-            />
-            {console.log('here too')} */}
             <CreateX />
         </>
     }
@@ -73,7 +75,9 @@ export default function Game()
             geometry={geometry}
             material={material}
             position={[-3.25, 1, -3.25]}
-            onClick={action}
+            onClick={() => {
+                <CreateX />
+            }}
         />
         <mesh
             onClick={action}

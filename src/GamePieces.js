@@ -23,7 +23,7 @@ export default function GamePieces()
             positions.push([
                 (Math.random() - 0.5) * 4,
                 15 * i,
-                (Math.random() - 0.5) - 5 
+                (Math.random() - 0.5) - 15 
             ])
             rotations.push([0, 0, 0])
             scales.push([1, 1, 1])
@@ -43,7 +43,7 @@ export default function GamePieces()
             position={[
                 (Math.random() - 0.5) * 4,
                 15 * index,
-                (Math.random() - 0.5) + 5
+                (Math.random() - 0.5) + 15
             ]}
         >
             <group>
