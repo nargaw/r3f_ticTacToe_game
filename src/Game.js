@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { RigidBody } from '@react-three/rapier'
 
 export function CreateX()
@@ -41,7 +41,8 @@ export default function Game()
 
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
-    material.visible = true
+    material.visible = false
+    const newMaterial = new THREE.MeshNormalMaterial()
 
     const topLeft = useRef()
     const topMid = useRef()
@@ -54,6 +55,11 @@ export default function Game()
     const bottomRight = useRef()
 
     const createX = () => {
+        console.log('creating x')
+        console.log(newMesh)
+        return <>
+            <mesh ref={newMesh} material={newMaterial} geometry={geometry} position={[0, 15, 0]}/>
+        </>
         
     }
 
@@ -63,10 +69,6 @@ export default function Game()
         let position = e.eventObject.position
         console.log(position)
         e.stopPropagation()
-        
-        return <>
-            <CreateX />
-        </>
     }
 
     return <>
@@ -75,9 +77,7 @@ export default function Game()
             geometry={geometry}
             material={material}
             position={[-3.25, 1, -3.25]}
-            onClick={() => {
-                <CreateX />
-            }}
+            onClick={action}
         />
         <mesh
             onClick={action}
