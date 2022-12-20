@@ -69,11 +69,11 @@ export default function Game()
     const action = (e) => 
     {
         const position = e.eventObject.position
+        console.log(e.eventObject)
         let newPosition={...position}
-        console.log(newPosition)
+        // console.log(newPosition)
         newPosition.y += 3
-        console.log(newPosition.y)
-
+        // console.log(newPosition.y)
         const xCount = xShapes.length
         setXShapes(
             [
@@ -84,8 +84,7 @@ export default function Game()
                 />
             ]
         )
-        console.log('creating x')  
-        
+        // console.log('creating x')  
         e.stopPropagation()
     }
 

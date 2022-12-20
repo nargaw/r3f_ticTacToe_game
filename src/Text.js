@@ -5,7 +5,7 @@ import { useRef } from "react"
 export default function Text()
 {
     const text = useRef()
-    console.log(text)
+    // console.log(text)
 
     return <>
         {/* <Center> */}
