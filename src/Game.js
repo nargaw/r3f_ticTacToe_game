@@ -23,7 +23,7 @@ export default function Game()
     const bottomMid = useRef()
     const bottomRight = useRef()
 
-    function Xshape()
+    function Xshape(props)
     {
         const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
         const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
@@ -35,10 +35,15 @@ export default function Game()
         console.log(x)
 
         return <>
-            <RigidBody
+            <RigidBody 
+                // {...props}
                 colliders="cuboid"
+                position={props.position}
+                rotation-x={Math.random()}
+                rotation-y={Math.random()}
+                rotation-z={Math.random()}
             >
-                <group ref={x}>
+                <group  ref={x}>
                     <mesh
                         geometry={xGeometry}
                         material={xMaterial}
@@ -59,25 +64,27 @@ export default function Game()
     }
 
     const [xShapes, setXShapes ] = useState([])
-    const createX = () => {
+    
+
+    const action = (e) => 
+    {
+        const position = e.eventObject.position
+        let newPosition={...position}
+        console.log(newPosition)
+        newPosition.y += 3
+        console.log(newPosition.y)
+
         const xCount = xShapes.length
         setXShapes(
             [
                 ...xShapes,
                 <Xshape 
                     key={xCount}
+                    position={[position.x, position.y + 2, position.z]}
                 />
             ]
         )
-        console.log('creating x')    
-    }
-
-    const action = (e) => 
-    {
-        let position = e.eventObject.position
-        console.log(position)
-
-        createX(position)
+        console.log('creating x')  
         
         e.stopPropagation()
     }
