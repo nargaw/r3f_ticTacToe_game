@@ -91,13 +91,13 @@ export default function Game()
     const action = (e) => 
     {
         const position = e.eventObject.position
-        console.log(e.eventObject)
+        // console.log(e.eventObject)
         let newPosition={...position}
         newPosition.y += 3
         const xCount = xShapes.length
         const oCount = oShapes.length
 
-        if(current === turns[0]){
+       
             setXShapes(
                 [
                     ...xShapes,
@@ -107,8 +107,7 @@ export default function Game()
                     />
                 ]
             )
-            current = turns[1]
-        } else {
+
             setOShapes(
                 [
                     ...oShapes,
@@ -118,8 +117,6 @@ export default function Game()
                     />
                 ]
             )
-            current = turns[0]
-        }
         
         //console.log('creating x')  
         e.stopPropagation()
