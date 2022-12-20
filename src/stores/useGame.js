@@ -1,29 +1,25 @@
 import create from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware'
 
-export default create(subscribeWithSelector((set) =>
+export default create((set) =>
 {
     return {
         //turns
         current: 'x',
 
+
         xTurn: () =>
         {
-            set((state) => 
+            set(() => 
             {
-                if(state.current === 'o')
-                    return {current: 'x'}
-                return {}
+                current: 'x'
             })
         },
 
         oTurn: () => 
         {
-            set((state) => 
+            set(() => 
             {
-                if(state.current === 'x')
-                    return {current: 'o'}
-                return {}
+                current: 'o'
             })
         },
 
@@ -34,4 +30,4 @@ export default create(subscribeWithSelector((set) =>
             ['', '', ''] 
         ]
     }
-}))
+})

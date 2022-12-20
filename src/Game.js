@@ -12,7 +12,18 @@ export default function Game()
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
     // material.visible = false
-    
+    // const gameTurn = useGame((state) => {
+    //     console.log(state.current)
+    //     if(state.current === 'o')
+    //     {
+    //         console.log(" o\'s Turn")
+    //     } else {
+    //         console.log(" x\'s Turn")
+    //     }
+    // })
+    const changeTurnO = useGame((state) => state.oTurn)
+    const changeTurnX = useGame((state) => state.xTurn)
+    // console.log(gameTurn)
     const topLeft = useRef()
     const topMid = useRef()
     const topRight = useRef()
@@ -87,16 +98,17 @@ export default function Game()
         </>
     }
 
+
     const [xShapes, setXShapes ] = useState([])
     const [oShapes, setOShapes] = useState([])
+    const [turn, setTurn] = useState([])
     
-
     const action = (e) => 
     {
         const position = e.eventObject.position
         const xCount = xShapes.length
         const oCount = oShapes.length
-
+        
         setXShapes(
             [
                 ...xShapes,
@@ -123,6 +135,7 @@ export default function Game()
     return <>
         {[...xShapes]}
         {[...oShapes]}
+        {[...turn]}
         <mesh
             ref={topLeft} 
             geometry={geometry}
