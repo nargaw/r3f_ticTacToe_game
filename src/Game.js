@@ -1,48 +1,17 @@
 import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
 import { RigidBody } from '@react-three/rapier'
-
-export function CreateX()
-{
-
-    const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
-
-    const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
-    const oGeometry = new THREE.TorusGeometry(0.5, 0.25, 32, 32)
-
-    return <>
-            <RigidBody
-                ref={newMesh}
-                type="dynamic"
-                position={[0, 15, 0]}
-                colliders="cuboid"
-            >
-                <group>
-                    <mesh 
-                        geometry={xGeometry}
-                        material={xMaterial}
-                        rotation-z={-Math.PI * 0.25}
-                    />
-                    <mesh
-                        geometry={xGeometry}
-                        material={xMaterial}
-                        rotation-z={Math.PI * 0.25}
-                    />
-                </group>
-            </RigidBody>   
-        </>
-}
+import { useFrame } from '@react-three/fiber'
 
 export default function Game()
 {
-
-    const newMesh = useRef()
-    console.log(newMesh)
-
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
-    material.visible = false
+    // material.visible = false
     const newMaterial = new THREE.MeshNormalMaterial()
+    const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
+    const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
+    
 
     const topLeft = useRef()
     const topMid = useRef()
@@ -54,24 +23,67 @@ export default function Game()
     const bottomMid = useRef()
     const bottomRight = useRef()
 
-    const createX = () => {
-        console.log('creating x')
-        console.log(newMesh)
+    function Xshape()
+    {
+        const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
+        const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
+
+        const x = useRef()
+        // useFrame(() => {
+        //     // x.current.rotation.x = x.current.rotation.y += 0.01
+        // })
+        console.log(x)
+
         return <>
-            <mesh ref={newMesh} material={newMaterial} geometry={geometry} position={[0, 15, 0]}/>
+            <RigidBody
+                colliders="cuboid"
+            >
+                <group ref={x}>
+                    <mesh
+                        geometry={xGeometry}
+                        material={xMaterial}
+                        rotation-z={Math.PI * 0.25}
+                    >
+                        <meshNormalMaterial />
+                    </mesh>
+                    <mesh
+                        geometry={xGeometry}
+                        material={xMaterial}
+                        rotation-z={-Math.PI * 0.25}
+                    >
+                        <meshNormalMaterial />
+                    </mesh>
+                </group>
+            </RigidBody>  
         </>
-        
+    }
+
+    const [xShapes, setXShapes ] = useState([])
+    const createX = () => {
+        const xCount = xShapes.length
+        setXShapes(
+            [
+                ...xShapes,
+                <Xshape 
+                    key={xCount}
+                />
+            ]
+        )
+        console.log('creating x')    
     }
 
     const action = (e) => 
     {
-        createX()
         let position = e.eventObject.position
         console.log(position)
+
+        createX(position)
+        
         e.stopPropagation()
     }
 
     return <>
+        {[...xShapes]}
         <mesh
             ref={topLeft} 
             geometry={geometry}

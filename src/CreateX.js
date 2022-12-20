@@ -18,9 +18,7 @@ export default function CreateX()
                     rotation-z={-Math.PI * 0.25}
                 />
                 <mesh
-                    geometry={xGeometry}
-                    material={xMaterial}
-                    rotation-z={Math.PI * 0.25}
+                    
                 />
             </group>
         </RigidBody>  

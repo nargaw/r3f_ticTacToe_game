@@ -9,11 +9,13 @@ export default function Text()
 
     return <>
         {/* <Center> */}
-            <RigidBody
+            {/* <RigidBody
                 type="fixed"
-                position={[0, 5, 24]}
-            >
-                <Center>
+                position={[0, 0, 24]}
+            > */}
+                <Center
+                    position={[0, 5, 24]}
+                >
                     <Text3D
                         ref={text}
                         font="./Offside_Regular.json"
@@ -32,7 +34,7 @@ export default function Text()
                         <meshStandardMaterial color={0x7fc8f8}/>
                     </Text3D>
                 </Center>
-            </RigidBody>
+            {/* </RigidBody> */}
             
         {/* </Center>    */}
     </>

@@ -15,11 +15,11 @@ export default function Experience()
     return <>
         <OrbitControls makeDefault />
         <Physics>
-            {/* <Debug /> */}
+            <Debug />
             <Lights />
             <Environment />
             <Platform />
-            <GamePieces />
+            {/* <GamePieces /> */}
             <Text />
             <Game />
         </Physics>
