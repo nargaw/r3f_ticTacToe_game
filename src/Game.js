@@ -1,11 +1,14 @@
 import * as THREE from 'three'
+import useGame from './stores/useGame.js'
 import { useEffect, useRef, useState } from 'react'
 import { RigidBody } from '@react-three/rapier'
 import { useFrame } from '@react-three/fiber'
 import { RoundCuboidCollider } from '@react-three/rapier'
 
+
 export default function Game()
 {
+    // const currentTurn = useGame((state) => {console.log(state)})
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
     // material.visible = false
@@ -22,6 +25,7 @@ export default function Game()
 
     function Oshape(props)
     {
+        
         const oGeometry = new THREE.TorusGeometry(0.5, 0.25, 32, 32)
         const oMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
 
@@ -57,7 +61,6 @@ export default function Game()
 
         return <>
             <RigidBody 
-                // {...props}
                 colliders="cuboid"
                 position={props.position}
                 rotation-x={Math.random()}
@@ -91,34 +94,29 @@ export default function Game()
     const action = (e) => 
     {
         const position = e.eventObject.position
-        // console.log(e.eventObject)
-        let newPosition={...position}
-        newPosition.y += 3
         const xCount = xShapes.length
         const oCount = oShapes.length
 
-       
-            setXShapes(
-                [
-                    ...xShapes,
-                    <Xshape 
-                        key={xCount}
-                        position={[position.x, position.y + 2, position.z]}
-                    />
-                ]
-            )
+        setXShapes(
+            [
+                ...xShapes,
+                <Xshape 
+                    key={xCount}
+                    position={[position.x, position.y + 2, position.z]}
+                />
+            ]
+        )
 
-            setOShapes(
-                [
-                    ...oShapes,
-                    <Oshape 
-                        key={oCount}
-                        position={[position.x, position.y + 2, position.z]}
-                    />
-                ]
-            )
-        
-        //console.log('creating x')  
+        setOShapes(
+            [
+                ...oShapes,
+                <Oshape 
+                    key={oCount}
+                    position={[position.x, position.y + 2, position.z]}
+                />
+            ]
+        )
+         
         e.stopPropagation()
     }
 
