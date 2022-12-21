@@ -16,7 +16,7 @@ export default function Game()
     console.log(changeTurn)
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
-    // material.visible = false
+    material.visible = false
     // const gameTurn = useGame((state) => {
     //     console.log(state.current)
     //     if(state.current === 'o')
@@ -42,7 +42,7 @@ export default function Game()
     {
         
         const oGeometry = new THREE.TorusGeometry(0.5, 0.25, 32, 32)
-        const oMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
+        const oMaterial = new THREE.MeshStandardMaterial({color: 0xff0000})
 
         const o = useRef()
 
@@ -55,7 +55,8 @@ export default function Game()
                 rotation-z={Math.random()}
             >
                 <RoundCuboidCollider args={[0.5, 0.425, 0.0125, 0.25]}/>
-                <mesh 
+                <mesh
+                    castShadow 
                     geometry={oGeometry}
                     material={oMaterial}
                 />
@@ -65,7 +66,7 @@ export default function Game()
 
     function Xshape(props)
     {
-        const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
+        const xMaterial = new THREE.MeshStandardMaterial({color: 0xff0000})
         const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
 
         const x = useRef()
@@ -82,21 +83,17 @@ export default function Game()
                 rotation-y={Math.random()}
                 rotation-z={Math.random()}
             >
-                <group  ref={x}>
+                <group  ref={x} castShadow>
                     <mesh
                         geometry={xGeometry}
                         material={xMaterial}
                         rotation-z={Math.PI * 0.25}
-                    >
-                        <meshNormalMaterial />
-                    </mesh>
+                    />
                     <mesh
                         geometry={xGeometry}
                         material={xMaterial}
                         rotation-z={-Math.PI * 0.25}
-                    >
-                        <meshNormalMaterial />
-                    </mesh>
+                    />
                 </group>
             </RigidBody>  
         </>
@@ -108,7 +105,7 @@ export default function Game()
     
     const action = (e) => 
     {
-        
+        console.log(e.eventObject.__r3f.handlers.onClick)
         const position = e.eventObject.position
         const xCount = xShapes.length
         const oCount = oShapes.length
@@ -123,8 +120,8 @@ export default function Game()
                     />
                 ]
             )
-            console.log(state.current)
-            state.changeTurn
+            changeTurn()
+            // e.eventObject.position.y = -1000
            
         } else {
             setOShapes(
@@ -136,8 +133,8 @@ export default function Game()
                     />
                 ]
             )
-            console.log(state.current)
-            state.changeTurn
+            changeTurn()
+            // e.eventObject.position.y = -1000
         }
         
         e.stopPropagation()
@@ -151,7 +148,7 @@ export default function Game()
             geometry={geometry}
             material={material}
             position={[-3.25, 1, -3.25]}
-            onClick={changeTurn}
+            onClick={action}
         />
         <mesh
             onClick={action}

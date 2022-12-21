@@ -19,13 +19,12 @@ export default create((set, get) =>
                 set((state) => ({
                     current: 'o'
                 }));
-                console.log('change turn to o')
+                
             } else 
             {
                 set((state) => ({
                     current: 'x'
                 }));
-                console.log('change turn to x')
             }
             
         },
