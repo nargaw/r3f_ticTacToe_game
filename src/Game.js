@@ -9,6 +9,11 @@ import { RoundCuboidCollider } from '@react-three/rapier'
 export default function Game()
 {
     // const currentTurn = useGame((state) => {console.log(state)})
+    const state = useGame()
+    // console.log(state.getCurrent())
+    let currentTurn = state.getCurrent()
+    const changeTurn = useGame(state => state.changeTurn)
+    console.log(changeTurn)
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
     // material.visible = false
@@ -21,8 +26,7 @@ export default function Game()
     //         console.log(" x\'s Turn")
     //     }
     // })
-    const changeTurnO = useGame((state) => state.oTurn)
-    const changeTurnX = useGame((state) => state.xTurn)
+    
     // console.log(gameTurn)
     const topLeft = useRef()
     const topMid = useRef()
@@ -101,47 +105,53 @@ export default function Game()
 
     const [xShapes, setXShapes ] = useState([])
     const [oShapes, setOShapes] = useState([])
-    const [turn, setTurn] = useState([])
     
     const action = (e) => 
     {
+        
         const position = e.eventObject.position
         const xCount = xShapes.length
         const oCount = oShapes.length
+        if(state.current === 'x')
+        {
+            setXShapes(
+                [
+                    ...xShapes,
+                    <Xshape 
+                        key={xCount}
+                        position={[position.x, position.y + 2, position.z]}
+                    />
+                ]
+            )
+            console.log(state.current)
+            state.changeTurn
+           
+        } else {
+            setOShapes(
+                [
+                    ...oShapes,
+                    <Oshape 
+                        key={oCount}
+                        position={[position.x, position.y + 2, position.z]}
+                    />
+                ]
+            )
+            console.log(state.current)
+            state.changeTurn
+        }
         
-        setXShapes(
-            [
-                ...xShapes,
-                <Xshape 
-                    key={xCount}
-                    position={[position.x, position.y + 2, position.z]}
-                />
-            ]
-        )
-
-        setOShapes(
-            [
-                ...oShapes,
-                <Oshape 
-                    key={oCount}
-                    position={[position.x, position.y + 2, position.z]}
-                />
-            ]
-        )
-         
         e.stopPropagation()
     }
 
     return <>
         {[...xShapes]}
         {[...oShapes]}
-        {[...turn]}
         <mesh
             ref={topLeft} 
             geometry={geometry}
             material={material}
             position={[-3.25, 1, -3.25]}
-            onClick={action}
+            onClick={changeTurn}
         />
         <mesh
             onClick={action}

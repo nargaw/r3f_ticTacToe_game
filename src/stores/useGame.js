@@ -1,26 +1,33 @@
 import create from 'zustand';
 
-export default create((set) =>
+export default create((set, get) =>
 {
     return {
         //turns
-        current: 'x',
+        current: 'o',
+        nextTurn: 'x',
 
-
-        xTurn: () =>
-        {
-            set(() => 
-            {
-                current: 'x'
-            })
+        getCurrent: () => {
+            return get().current
         },
 
-        oTurn: () => 
+
+        changeTurn: () =>
         {
-            set(() => 
+            if(get().current === 'x')
             {
-                current: 'o'
-            })
+                set((state) => ({
+                    current: 'o'
+                }));
+                console.log('change turn to o')
+            } else 
+            {
+                set((state) => ({
+                    current: 'x'
+                }));
+                console.log('change turn to x')
+            }
+            
         },
 
         //board status
