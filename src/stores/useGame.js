@@ -5,7 +5,6 @@ export default create((set, get) =>
     return {
         //turns
         current: 'o',
-        nextTurn: 'x',
 
         getCurrent: () => {
             return get().current
@@ -34,6 +33,10 @@ export default create((set, get) =>
             ['', '', ''],
             ['', '', ''],
             ['', '', ''] 
-        ]
+        ],
+        
+        checkBoard: () => {
+            return get().board
+        }
     }
 })

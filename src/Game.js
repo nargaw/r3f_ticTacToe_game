@@ -11,9 +11,12 @@ export default function Game()
     // const currentTurn = useGame((state) => {console.log(state)})
     const state = useGame()
     // console.log(state.getCurrent())
-    let currentTurn = state.getCurrent()
+    const currentTurn = state.getCurrent()
     const changeTurn = useGame(state => state.changeTurn)
-    console.log(changeTurn)
+    // console.log(changeTurn)
+    const boardStatus = state.checkBoard()
+    console.log(boardStatus)
+
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
     material.visible = false
@@ -105,7 +108,11 @@ export default function Game()
     
     const action = (e) => 
     {
-        console.log(e.eventObject.__r3f.handlers.onClick)
+        // console.log(e.eventObject.position.x)
+        const x = e.eventObject.position.x
+        const z = e.eventObject.position.z
+        console.log(x, z)
+        
         const position = e.eventObject.position
         const xCount = xShapes.length
         const oCount = oShapes.length

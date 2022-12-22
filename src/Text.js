@@ -14,13 +14,13 @@ export default function Text()
                 position={[0, 0, 24]}
             > */}
                 <Center
-                    position={[0, 5, 24]}
+                    position={[0, 5, -24]}
                 >
                     <Text3D
                         ref={text}
                         font="./Offside_Regular.json"
                         scale={[6, 6, 1]}
-                        rotation-y = {-Math.PI}
+                        rotation-y = {Math.PI * 2}
                         size={ 0.75 }
                         height={ 2 }
                         curveSegments={ 12 }
