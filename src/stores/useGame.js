@@ -37,6 +37,17 @@ export default create((set, get) =>
         
         checkBoard: () => {
             return get().board
+        },
+
+        setBoard: (x, z) => {
+            switch (x, z){
+                case (0, 0) :
+                    console.log('middle')
+                    break
+                default:
+                    console.log('setting board')
+            }
+            
         }
     }
 })

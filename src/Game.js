@@ -13,9 +13,10 @@ export default function Game()
     // console.log(state.getCurrent())
     const currentTurn = state.getCurrent()
     const changeTurn = useGame(state => state.changeTurn)
+    const setBoard = useGame(state => state.setBoard)
     // console.log(changeTurn)
     const boardStatus = state.checkBoard()
-    console.log(boardStatus)
+    // console.log(boardStatus)
 
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
@@ -111,8 +112,8 @@ export default function Game()
         // console.log(e.eventObject.position.x)
         const x = e.eventObject.position.x
         const z = e.eventObject.position.z
-        console.log(x, z)
-        
+        // console.log(x, z)
+
         const position = e.eventObject.position
         const xCount = xShapes.length
         const oCount = oShapes.length
@@ -127,6 +128,7 @@ export default function Game()
                     />
                 ]
             )
+            setBoard(x, z)
             changeTurn()
             // e.eventObject.position.y = -1000
            
@@ -140,6 +142,7 @@ export default function Game()
                     />
                 ]
             )
+            setBoard(x, z)
             changeTurn()
             // e.eventObject.position.y = -1000
         }
