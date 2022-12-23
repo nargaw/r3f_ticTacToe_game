@@ -1,26 +1,31 @@
 import * as THREE from 'three'
 import { RigidBody } from '@react-three/rapier'
 
-export default function CreateX()
+export default function Xshape(props)
 {
-    const xMaterial = new THREE.MeshStandardMaterial({color: 0x00ffff})
+    const xMaterial = new THREE.MeshStandardMaterial({color: 0xff0000})
     const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
-    return <>
-        <RigidBody
-            type="dynamic"
-            position={[0, 20, 0]}
-            colliders="cuboid"
-        >
-            <group>
-                <mesh 
-                    geometry={xGeometry}
-                    material={xMaterial}
-                    rotation-z={-Math.PI * 0.25}
-                />
-                <mesh
-                    
-                />
-            </group>
-        </RigidBody>  
-    </>
+
+        return <>
+            <RigidBody 
+                colliders="cuboid"
+                position={props.position}
+                rotation-x={Math.random()}
+                rotation-y={Math.random()}
+                rotation-z={Math.random()}
+            >
+                <group castShadow>
+                    <mesh
+                        geometry={xGeometry}
+                        material={xMaterial}
+                        rotation-z={Math.PI * 0.25}
+                    />
+                    <mesh
+                        geometry={xGeometry}
+                        material={xMaterial}
+                        rotation-z={-Math.PI * 0.25}
+                    />
+                </group>
+            </RigidBody>  
+        </>
 }
