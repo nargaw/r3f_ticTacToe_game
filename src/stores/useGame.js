@@ -6,6 +6,19 @@ export default create((set, get) =>
         //turns
         current: 'o',
 
+        
+
+        //board status
+        board: [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', ''] 
+        ],
+
+        boardStatus: 'locked',
+
+        winner: 'null',
+
         getCurrent: () => {
             return get().current
         },
@@ -28,30 +41,62 @@ export default create((set, get) =>
             
         },
 
-        //board status
-        board: [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', ''] 
-        ],
-
-        boardStatus: 'locked',
-
         getBoardStatus: () => 
         {
             return get().boardStatus
         },
 
+        getWinner: () =>
+        {
+            // console.log("winner is: " + get().winner)
+            return get().winner
+        },
 
-        //check board position to see if it is occupied before creating shape
-        checkBoard: (x, z) => {
-            // for(let i = 0; i <=2; i++){
-            //     for(let j = 0; j <=2; j++){
-                    
-            //     }
-            // }
-            // console.log(get().board[0][0])
-            // return get().board
+        //check board to determine if there is a winner
+        checkWinner: () => {
+            for(let i = 0; i < 3; i++)
+            {
+                let rowString = ''
+                let columnString = ''
+                
+                for(let j = 0; j < 3; j++ )
+                {
+                    rowString += get().board[i][j]
+                    columnString += get().board[j][i]
+                    let n = rowString.length
+                    let m = columnString.length
+                    if(n === 3)
+                    {
+                        
+                        for(let i = 1; i < n; i++)
+                        {
+                            console.log('row:' + rowString)
+                            if(rowString[i] !== rowString[0]){
+                                console.log('no winner')     
+                                return
+                            } else {
+                                console.log('winner is:' + rowString[0])
+                                
+                            }     
+                        }  
+                    }
+                    if(m === 3)
+                    {
+                        
+                        for(let i = 1; i < m; i++)
+                        {
+                            console.log('column:' + columnString)
+                            if(columnString[i] !== columnString[0]){
+                                console.log('no winner')
+                                return
+                            } else {
+                                console.log('winner is:' + columnString[0]) 
+                            }     
+                        }  
+                    }
+                }   
+            }
+            console.log("checking winner...")
         },
 
         //check the board to see if the position is already occupied

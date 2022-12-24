@@ -5,7 +5,7 @@ import { Physics, Debug } from '@react-three/rapier'
 import Lights from './Lights.js'
 import Environment from './Environment.js'
 import Platform from './Platform.js'
-import GamePieces from './GamePieces.js'
+import InstancedObjects from './InstancedObjects.js'
 import Text from './Text.js'
 import Game from './Game.js'
 
@@ -19,7 +19,7 @@ export default function Experience()
             <Lights />
             <Environment />
             <Platform />
-            {/* <GamePieces /> */}
+            {/* <InstancedObjects /> */}
             <Text />
             <Game />
         </Physics>
