@@ -67,32 +67,15 @@ export default create((set, get) =>
                     let m = columnString.length
                     if(n === 3)
                     {
-                        
-                        for(let i = 1; i < n; i++)
+                        for(i=0; i < 3; i++)
                         {
-                            console.log('row:' + rowString)
-                            if(rowString[i] !== rowString[0]){
-                                console.log('no winner')     
-                                return
-                            } else {
-                                console.log('winner is:' + rowString[0])
-                                
-                            }     
-                        }  
+                            console.log(rowString[i])
+                        }
+                        console.log('r: ' + rowString)
                     }
                     if(m === 3)
                     {
-                        
-                        for(let i = 1; i < m; i++)
-                        {
-                            console.log('column:' + columnString)
-                            if(columnString[i] !== columnString[0]){
-                                console.log('no winner')
-                                return
-                            } else {
-                                console.log('winner is:' + columnString[0]) 
-                            }     
-                        }  
+                        console.log('c: ' + columnString)
                     }
                 }   
             }
