@@ -17,7 +17,7 @@ export default create((set, get) =>
 
         boardStatus: 'locked',
 
-        winner: 'null',
+        winner: '',
 
         getCurrent: () => {
             return get().current
@@ -54,32 +54,24 @@ export default create((set, get) =>
 
         //check board to determine if there is a winner
         checkWinner: () => {
+            let row = []
+            let column = []
+            let diag = []
+            let antidiag = []
+
             for(let i = 0; i < 3; i++)
             {
-                let rowString = ''
-                let columnString = ''
-                
-                for(let j = 0; j < 3; j++ )
+                diag.push(get().board[i][i])
+                antidiag.push(get().board[(get().board[0].length - 1) - i][i])
+                for(let j = 0; j < 3; j++)
                 {
-                    rowString += get().board[i][j]
-                    columnString += get().board[j][i]
-                    let n = rowString.length
-                    let m = columnString.length
-                    if(n === 3)
-                    {
-                        for(i=0; i < 3; i++)
-                        {
-                            console.log(rowString[i])
-                        }
-                        console.log('r: ' + rowString)
-                    }
-                    if(m === 3)
-                    {
-                        console.log('c: ' + columnString)
-                    }
-                }   
+                    row.push(get().board[i][j])
+                    column.push(get().board[j][i]) 
+                }  
             }
-            console.log("checking winner...")
+
+            console.log(antidiag)
+
         },
 
         //check the board to see if the position is already occupied
