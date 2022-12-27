@@ -30,37 +30,42 @@ export default function Game()
         const oCount = oShapes.length
         if(state.current === 'x')
         {
-            setBoard(x, z)
-            if(boardStatus() === 'open'){
-                setXShapes(
-                    [
-                        ...xShapes,
-                        <Xshape 
-                            key={xCount}
-                            position={[position.x, position.y + 2, position.z]}
-                        />
-                    ]
-                )
-                checkWinner()
-                // console.log('winner is: ' + getWinner())
-                changeTurn()
+            if(getWinner() === ''){
+                setBoard(x, z)
+                if(boardStatus() === 'open'){
+                    setXShapes(
+                        [
+                            ...xShapes,
+                            <Xshape 
+                                key={xCount}
+                                position={[position.x, position.y + 2, position.z]}
+                            />
+                        ]
+                    )
+                    checkWinner()
+                    // console.log('winner is: ' + getWinner())
+                    changeTurn()
+                }
             }
            
         } else {
-            setBoard(x, z)
-            if(boardStatus() === 'open'){
-                setOShapes(
-                    [
-                        ...oShapes,
-                        <Oshape 
-                            key={oCount}
-                            position={[position.x, position.y + 2, position.z]}
-                        />
-                    ]
-                )
-                checkWinner()
-                // console.log('winner is: ' + getWinner())
-                changeTurn()
+            if(getWinner() === ''){
+                setBoard(x, z)
+                if(boardStatus() === 'open'){
+                    setOShapes(
+                        [
+                            ...oShapes,
+                            <Oshape 
+                                key={oCount}
+                                position={[position.x, position.y + 2, position.z]}
+                            />
+                        ]
+                    )
+                    checkWinner()
+                    // console.log('winner is: ' + getWinner())
+                    changeTurn()
+                }
+            
             }
         }
         // console.log(boardStatus())

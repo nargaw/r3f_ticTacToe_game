@@ -69,8 +69,33 @@ export default create((set, get) =>
                     column.push(get().board[j][i]) 
                 }  
             }
+            let r1, r2, r3 = []
+            r1 = row.slice(0, 3).join('')
+            r2 = row.slice(3, 6).join('')
+            r3 = row.slice(6, 9).join('')
 
-            console.log(antidiag)
+            let c1, c2, c3 = []
+            c1 = column.slice(0, 3).join('')
+            c2 = column.slice(3, 6).join('')
+            c3 = column.slice(6, 9).join('')
+
+            let d, ad = []
+            d = diag.slice(0, 3).join('')
+            ad = antidiag.slice(0, 3).join('')
+
+            if(r1.match(/xxx/g) || r2.match(/xxx/g) || r3.match(/xxx/g) || c1.match(/xxx/g) || c2.match(/xxx/g) || c3.match(/xxx/g) || d.match(/xxx/g) || ad.match(/xxx/g) ){
+                
+                set((state) => ({winner: 'x'}))
+                set((state) => ({boardStatus: 'locked'}))
+                console.log(get().winner)
+            }
+
+            if(r1.match(/ooo/g) || r2.match(/ooo/g) || r3.match(/ooo/g) || c1.match(/ooo/g) || c2.match(/ooo/g) || c3.match(/ooo/g) || d.match(/ooo/g) || ad.match(/ooo/g) ){
+                
+                set((state) => ({winner: 'o'}))
+                set((state) => ({boardStatus: 'locked'}))
+                console.log(get().winner)
+            }
 
         },
 
