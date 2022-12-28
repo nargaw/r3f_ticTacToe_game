@@ -17,14 +17,20 @@ export default function Platform()
     useFrame((state, delta) => {
         if(gameover)
         {
-            let time = state.clock.getElapsedTime()
+            const time = state.clock.getElapsedTime()
 
-            const eulerRotation = new THREE.Euler(0, 0, time * 0.25)
-            const quaternionRotation = new THREE.Quaternion()
-            quaternionRotation.setFromEuler(eulerRotation)
-            platform.current.setNextKinematicRotation(quaternionRotation)
+            const eulerRotation = new THREE.Euler(0, 0, 0)
+            if(eulerRotation.z >= -Math.PI)
+            {
+                eulerRotation.z -= 0.01 * time
+                console.log(eulerRotation.z)
+                const quaternionRotation = new THREE.Quaternion()
+                quaternionRotation.setFromEuler(eulerRotation)
+                platform.current.setNextKinematicRotation(quaternionRotation)
+            }
             
-            console.log(time)
+            
+            // console.log(time)
         }
     })
 
