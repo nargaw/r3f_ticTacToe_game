@@ -1,10 +1,13 @@
 import { Text3D, Center } from "@react-three/drei"
 import { RigidBody } from "@react-three/rapier"
 import { useRef } from "react"
+import useGame from "./stores/useGame"
 
 export default function Text()
 {
     const text = useRef()
+    const getWinner = useGame(state => state.getWinner)
+    console.log(getWinner())
     // console.log(text)
 
     return <>

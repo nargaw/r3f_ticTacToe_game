@@ -6,8 +6,6 @@ export default create((set, get) =>
         //turns
         current: 'o',
 
-        
-
         //board status
         board: [
             ['', '', ''],
@@ -18,6 +16,8 @@ export default create((set, get) =>
         boardStatus: 'locked',
 
         winner: '',
+
+        gameover: false,
 
         getCurrent: () => {
             return get().current
@@ -88,6 +88,7 @@ export default create((set, get) =>
                 set((state) => ({winner: 'x'}))
                 set((state) => ({boardStatus: 'locked'}))
                 console.log(get().winner)
+                // set((state) => ({gameover: true}))
             }
 
             if(r1.match(/ooo/g) || r2.match(/ooo/g) || r3.match(/ooo/g) || c1.match(/ooo/g) || c2.match(/ooo/g) || c3.match(/ooo/g) || d.match(/ooo/g) || ad.match(/ooo/g) ){
@@ -95,6 +96,7 @@ export default create((set, get) =>
                 set((state) => ({winner: 'o'}))
                 set((state) => ({boardStatus: 'locked'}))
                 console.log(get().winner)
+                // set((state) => ({gameover: true}))
             }
 
         },
@@ -178,6 +180,31 @@ export default create((set, get) =>
                 default:
                     set().boardStatus = 'locked'
             } 
+        },
+
+        restart: () =>
+        {
+            if(get().winner === 'x')
+            {
+                set((state) => ({current: 'o'}))
+            }
+            if(get().winner === 'o')
+            {
+                set((state) => ({current: 'x'}))
+            }
+            set((state) => ({winner: ''}))
+            set((state) => ({board: [
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', ''] 
+            ]}))
+            set((state) => ({gameover: true}))
+            console.log('restarting')
+        },
+
+        reset: () => 
+        {
+            set((state) => ({gameover: false}))
         }
     }
 })
