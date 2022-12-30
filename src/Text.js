@@ -1,6 +1,6 @@
 import { Text3D, Center } from "@react-three/drei"
 import { RigidBody } from "@react-three/rapier"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import useGame from "./stores/useGame"
 
 export default function Text()
@@ -8,9 +8,10 @@ export default function Text()
     const text = useRef()
     const winner = useRef()
     const getWinner = useGame(state => state.getWinner)
+    const displayWinner = useGame(state => state.displayWinner)
     console.log(getWinner())
-    // console.log(text)
-
+    console.log(displayWinner)
+    
     return <>
         
         <Center
@@ -79,7 +80,9 @@ export default function Text()
             </Text3D>
         </Center>
 
-        <Center
+        {getWinner !== '' && 
+        
+            <Center
                 position={[24, 5, 0]}
             >
                 <Text3D
@@ -97,10 +100,12 @@ export default function Text()
                     bevelSegments={ 5 }
                 >
                     
-                    {getWinner()}
+                    {getWinner() }
                     <meshStandardMaterial color={0x7fc8f8}/>
                 </Text3D>
-        </Center>
+            </Center>
+        }
+        
 
 
         <Center

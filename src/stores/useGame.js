@@ -21,6 +21,8 @@ export default create((set, get) =>
 
         flipStartTime: 0,
 
+        displayWinner: false,
+
         getCurrent: () => {
             return get().current
         },
@@ -90,6 +92,7 @@ export default create((set, get) =>
                 set((state) => ({winner: 'x'}))
                 set((state) => ({boardStatus: 'locked'}))
                 console.log(get().winner)
+                set((state) => ({displayWinner: true}))
                 // set((state) => ({gameover: true}))
             }
 
@@ -98,12 +101,14 @@ export default create((set, get) =>
                 set((state) => ({winner: 'o'}))
                 set((state) => ({boardStatus: 'locked'}))
                 console.log(get().winner)
+                set((state) => ({displayWinner: true}))
                 // set((state) => ({gameover: true}))
             }
 
             else if(r1.length ===3 && r2.length ===3 && r3.length === 3) {
                 set((state) => ({winner: 'tie'}))
                 set((state) => ({boardStatus: 'locked'}))
+                set((state) => ({displayWinner: true}))
                 console.log(get().winner)
             }
 
@@ -214,6 +219,7 @@ export default create((set, get) =>
         reset: () => 
         {
             set((state) => ({flipBoard: false}))
+            set((state) => ({displayWinner: false}))
         }
     }
 })

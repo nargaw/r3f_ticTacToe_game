@@ -13,6 +13,7 @@ export default function Game()
     const setBoard = useGame(state => state.setBoard)
     const checkWinner = useGame(state => state.checkWinner)
     const getWinner = useGame(state => state.getWinner)
+    const flipBoard = useGame(state => state.flipBoard)
 
     const geometry = new THREE.BoxGeometry(3, 2, 3)
     const material = new THREE.MeshBasicMaterial({ wireframe: true})
@@ -30,7 +31,7 @@ export default function Game()
         const oCount = oShapes.length
         if(state.current === 'x')
         {
-            if(getWinner() === ''){
+            if(getWinner() === '' && flipBoard === false){
                 setBoard(x, z)
                 if(boardStatus() === 'open'){
                     setXShapes(
@@ -49,7 +50,7 @@ export default function Game()
             }
            
         } else {
-            if(getWinner() === ''){
+            if(getWinner() === '' && flipBoard === false){
                 setBoard(x, z)
                 if(boardStatus() === 'open'){
                     setOShapes(
