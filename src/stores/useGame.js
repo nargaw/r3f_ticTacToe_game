@@ -17,7 +17,9 @@ export default create((set, get) =>
 
         winner: '',
 
-        gameover: false,
+        flipBoard: false,
+
+        flipStartTime: 0,
 
         getCurrent: () => {
             return get().current
@@ -91,12 +93,18 @@ export default create((set, get) =>
                 // set((state) => ({gameover: true}))
             }
 
-            if(r1.match(/ooo/g) || r2.match(/ooo/g) || r3.match(/ooo/g) || c1.match(/ooo/g) || c2.match(/ooo/g) || c3.match(/ooo/g) || d.match(/ooo/g) || ad.match(/ooo/g) ){
+             else if(r1.match(/ooo/g) || r2.match(/ooo/g) || r3.match(/ooo/g) || c1.match(/ooo/g) || c2.match(/ooo/g) || c3.match(/ooo/g) || d.match(/ooo/g) || ad.match(/ooo/g) ){
                 
                 set((state) => ({winner: 'o'}))
                 set((state) => ({boardStatus: 'locked'}))
                 console.log(get().winner)
                 // set((state) => ({gameover: true}))
+            }
+
+            else if(r1.length ===3 && r2.length ===3 && r3.length === 3) {
+                set((state) => ({winner: 'tie'}))
+                set((state) => ({boardStatus: 'locked'}))
+                console.log(get().winner)
             }
 
         },
@@ -198,13 +206,14 @@ export default create((set, get) =>
                 ['', '', ''],
                 ['', '', ''] 
             ]}))
-            set((state) => ({gameover: true}))
+            set((state) => ({flipBoard: true}))
+            set((state) => ({flipStartTime: Date.now()}))
             console.log('restarting')
         },
 
         reset: () => 
         {
-            set((state) => ({gameover: false}))
+            set((state) => ({flipBoard: false}))
         }
     }
 })

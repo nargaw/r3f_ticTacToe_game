@@ -7,7 +7,7 @@ export default function Text()
 {
     const text = useRef()
     const getWinner = useGame(state => state.getWinner)
-    console.log(getWinner())
+    // console.log(getWinner())
     // console.log(text)
 
     return <>

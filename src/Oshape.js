@@ -15,6 +15,7 @@ export default function Oshape(props)
                 rotation-x={Math.random()}
                 rotation-y={Math.random()}
                 rotation-z={Math.random()}
+                restitution = {0.5}
             >
                 <RoundCuboidCollider args={[0.5, 0.425, 0.0125, 0.25]}/>
                 <mesh

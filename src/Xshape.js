@@ -13,6 +13,7 @@ export default function Xshape(props)
                 rotation-x={Math.random()}
                 rotation-y={Math.random()}
                 rotation-z={Math.random()}
+                restitution = {0.5}
             >
                 <group castShadow>
                     <mesh
