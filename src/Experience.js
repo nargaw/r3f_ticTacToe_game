@@ -19,7 +19,7 @@ export default function Experience()
             <Lights />
             <Environment />
             <Platform />
-            {/* <InstancedObjects /> */}
+            <InstancedObjects />
             <Text />
             <Game />
         </Physics>

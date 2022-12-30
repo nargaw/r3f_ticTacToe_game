@@ -9,7 +9,7 @@ export default function InstancedObjects()
     const xGeometry = new THREE.BoxGeometry(8, 2, 2)
     const material = new THREE.MeshStandardMaterial({color: 0x7fc8f8})
 
-    const torusCount = 150
+    const torusCount = 100
     const torusRefs = useRef()
 
     const torusTransforms = useMemo(() => 
@@ -34,7 +34,7 @@ export default function InstancedObjects()
 
 
     return <>
-        {[...Array(150)].map((value, index) =>
+        {[...Array(100)].map((value, index) =>
         <RigidBody
             key={index}
             restitution={0.25}

@@ -14,6 +14,7 @@ export default function Xshape(props)
                 rotation-y={Math.random()}
                 rotation-z={Math.random()}
                 restitution = {0.5}
+                friction = {0.1}
             >
                 <group castShadow>
                     <mesh

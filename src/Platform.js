@@ -23,7 +23,7 @@ export default function Platform()
             if(state.flipBoard === true)
                 elapsedTime = Date.now() - state.flipStartTime
                 elapsedTime /= 1000
-                const eulerRotation = new THREE.Euler(0, 0, Math.sin(elapsedTime))
+                const eulerRotation = new THREE.Euler(0, 0, Math.sin(elapsedTime) * 2)
                 const quaternionRotation = new THREE.Quaternion()
                 quaternionRotation.setFromEuler(eulerRotation)
                 platform.current.setNextKinematicRotation(quaternionRotation)
