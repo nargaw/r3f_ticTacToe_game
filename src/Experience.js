@@ -8,12 +8,14 @@ import Platform from './Platform.js'
 import InstancedObjects from './InstancedObjects.js'
 import Text from './Text.js'
 import Game from './Game.js'
+import Effects from './Effects.js'
 
 
 export default function Experience()
 {
     return <>
-        <OrbitControls makeDefault />
+        <color args={ ['#201919'] } attach="background" />
+        <OrbitControls makeDefault enablePan={false} enableZoom={false}/>
         <Physics>
             {/* <Debug /> */}
             <Lights />
@@ -23,6 +25,7 @@ export default function Experience()
             <Text />
             <Game />
         </Physics>
+        <Effects />
        
         
     </>

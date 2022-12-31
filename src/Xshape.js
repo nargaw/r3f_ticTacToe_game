@@ -3,7 +3,7 @@ import { RigidBody } from '@react-three/rapier'
 
 export default function Xshape(props)
 {
-    const xMaterial = new THREE.MeshStandardMaterial({color: 0xff0000})
+    const xMaterial = new THREE.MeshStandardMaterial({color: 0xffff10, metalness: 0, roughness: 0})
     const xGeometry = new THREE.BoxGeometry(2, 0.5, 0.5)
 
         return <>
@@ -21,12 +21,16 @@ export default function Xshape(props)
                         geometry={xGeometry}
                         material={xMaterial}
                         rotation-z={Math.PI * 0.25}
-                    />
+                        >
+                        <meshBasicMaterial color={ [ 1.5, 1.5, 4 ] } toneMapped={ false }/>
+                    </mesh>
                     <mesh
                         geometry={xGeometry}
-                        material={xMaterial}
+                        // material={xMaterial}
                         rotation-z={-Math.PI * 0.25}
-                    />
+                    >
+                        <meshBasicMaterial color={ [ 1.5, 1.5, 4 ] } toneMapped={ false }/>
+                    </mesh>
                 </group>
             </RigidBody>  
         </>

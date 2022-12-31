@@ -6,7 +6,9 @@ export default function Oshape(props)
     {
         
         const oGeometry = new THREE.TorusGeometry(0.5, 0.25, 32, 32)
-        const oMaterial = new THREE.MeshStandardMaterial({color: 0xff0000})
+        const oMaterial = new THREE.MeshStandardMaterial({color: 0xffff00, metalness: 0, roughness: 0})
+
+        // color={ [ 1.5, 1, 4 ] } toneMapped={ false }
 
         return <>
             <RigidBody
@@ -22,8 +24,10 @@ export default function Oshape(props)
                 <mesh
                     castShadow 
                     geometry={oGeometry}
-                    material={oMaterial}
-                />
+                    // material={oMaterial}
+                >
+                <meshBasicMaterial color={ [ 1.5, 1.5, 4 ] } toneMapped={ false }/>
+                </mesh>
             </RigidBody>
         </>
     }

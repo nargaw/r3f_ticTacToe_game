@@ -8,7 +8,7 @@ import gsap from 'gsap'
 export default function Platform()
 {
     const platformGeometry = new THREE.BoxGeometry(12, 12, 0.5)
-    const platformMaterial = new THREE.MeshStandardMaterial({color: 0x5aa9e6})
+    const platformMaterial = new THREE.MeshStandardMaterial({color: '#444444', metalness: 0, roughness: 0})
     const gridGeometry = new THREE.BoxGeometry(0.25, 2, 10)
     const platform  = useRef()
     const flipBoard = useGame(state => state.flipBoard)

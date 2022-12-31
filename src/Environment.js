@@ -1,13 +1,23 @@
 import { RigidBody } from '@react-three/rapier'
+import { Center, Sparkles } from '@react-three/drei'
 import * as THREE from 'three'
 
 export default function Environment()
 {
 
     const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
-    const wallMaterial = new THREE.MeshStandardMaterial({color: 'red'})
+    const wallMaterial = new THREE.MeshStandardMaterial({color: '#444444', metalness: 0, roughness: 0})
 
     return <>
+        <Center>
+            <Sparkles 
+                size={6}
+                scale={[25, 25, 25]}
+                position-y={1}
+                speed={2.5}
+                count={60}
+            />
+        </Center>
         <RigidBody
             type="fixed"
             colliders="cuboid"
@@ -22,14 +32,14 @@ export default function Environment()
                 rotation-x = {-Math.PI * 0.5}
                 position-y = {-25}
             />
-            <mesh
+            {/* <mesh
                 // receiveShadow 
                 geometry={boxGeometry}
                 material={wallMaterial}
                 scale={[50, 50, 1]}
                 rotation-x = {-Math.PI * 0.5}
                 position-y = {25}
-            />
+            /> */}
             <mesh
                 receiveShadow 
                 geometry={boxGeometry}

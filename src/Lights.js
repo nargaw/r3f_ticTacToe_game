@@ -20,8 +20,8 @@ export default function Lights()
         <pointLight
             castShadow 
             color={'#ffffff'}
-            position={[10, 20, 0]}
-            intensity={0.4}
+            position={[10, 50, 0]}
+            intensity={0.1}
         />
         
         <ambientLight intensity={0.1} />

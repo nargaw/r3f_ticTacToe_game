@@ -7,7 +7,7 @@ export default function InstancedObjects()
 
     const torusGeometry = new THREE.TorusGeometry(2, 1., 32, 32)
     const xGeometry = new THREE.BoxGeometry(8, 2, 2)
-    const material = new THREE.MeshStandardMaterial({color: 0x7fc8f8})
+    const material = new THREE.MeshStandardMaterial({color: '#ff0000', metalness: 0, roughness: 1})
 
     const torusCount = 100
     const torusRefs = useRef()
