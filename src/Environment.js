@@ -1,5 +1,5 @@
 import { RigidBody } from '@react-three/rapier'
-import { Center, Sparkles } from '@react-three/drei'
+import { Center, Sparkles, MeshReflectorMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
 export default function Environment()

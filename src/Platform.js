@@ -1,6 +1,7 @@
 import { RigidBody } from '@react-three/rapier'
 import * as THREE from 'three'
 import useGame from './stores/useGame'
+import { MeshReflectorMaterial } from '@react-three/drei'
 import { useFrame, addEffect } from '@react-three/fiber'
 import { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
@@ -50,11 +51,34 @@ export default function Platform()
         >
             <mesh 
                 geometry={platformGeometry}
-                material={platformMaterial}
+                // material={platformMaterial}
                 rotation-x={-Math.PI * 0.5}
                 castShadow
                 receiveShadow
-            />
+            >
+                <MeshReflectorMaterial
+                    resolution={1024}
+                    mirror={0.75}
+                    mixBlur={10}
+                    mixStrength={2}
+                    blur={[0, 0]}
+                    minDepthThreshold={0.8}
+                    maxDepthThreshold={1.2}
+                    depthScale={ 0}
+                    depthToBlurRatioBias={0.2}
+                    debug={0}
+                    // distortion={distortion || 0}
+                    // distortionMap={distortionMap}
+                    color="#a0a0a0"
+                    metalness={0.5}
+                    // roughnessMap={roughness}
+                    roughness={1}
+                    // normalMap={normal}
+                    // normalScale={_normalScale}
+                    // reflectorOffset={reflectorOffset}
+                />
+            </mesh>
+
  
             <mesh 
                 geometry={gridGeometry}
